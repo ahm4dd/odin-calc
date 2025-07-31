@@ -92,6 +92,10 @@ button {
     background-color: #1C467C;
 }
 
-.operator {
+.operator, .equal {
     background-color: #7C5A1C;
+}
+
+#output {
+    word-break: break-all;
 }
