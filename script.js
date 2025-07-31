@@ -19,18 +19,45 @@ function divide(num1, num2) {
 }
 
 function calculate(expr) {
-    let numbers = expr.split(" ")
-    .filter((n) => n !== "" && !(n in availableOperators))
-    .map((n) => parseFloat(n));
-    let operators = expr.split(" ").filter((n) => n !== "" && (n in availableOperators));
+    const tokens = expr.trim().split(" ").filter(Boolean);
+    let values = [];
+    let ops = [];
     
-    let result = numbers[0];
-    
-    for (let i = 0; i < operators.length; i++) {
-        result = availableOperators[operators[i]](result, numbers[i + 1]);
+    const applyOperation = () => {
+        const op = ops.pop();
+        const rightOperand = values.pop();
+        const leftOperand = values.pop();
+        
+        values.push(availableOperators[op](leftOperand, rightOperand));
+    }
+
+    for (token of tokens) {
+        if (token in availableOperators) {
+            while (orderOfOperations[ops[ops.length - 1]] >= orderOfOperations[token]) {
+                applyOperation();
+            }
+
+            ops.push(token);
+        }
+
+        else {
+            values.push(parseFloat(token));
+        }
     }
     
-    return result;
+    while (ops.length > 0) {
+        applyOperation();
+    }
+
+    return values[0];
+}
+
+const orderOfOperations = {
+    "*": 2,
+    "/": 2,
+    "%": 2,
+    "+": 1,
+    "-": 1
 }
 
 const availableOperators = {
@@ -85,8 +112,3 @@ buttonsContainer.addEventListener("click", (e) => {
         expr = screenText.textContent;
     }
 });
-
-// listen to the buttons pressed, check their class and act accordingly
-// if number then we add it to the text
-// we make a function to parse the number and either returns an int or a float
-// also the parser should get rid of the operators
