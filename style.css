@@ -11,10 +11,86 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100vw;
+    height: 100vh;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #0C1C22;
+    padding: 43px 12px 26px 12px;
+    border: 3px solid black;
+    border-radius: 17px;
+    gap: 21px;
+    width: 243px;
+}
+
+.screen {
+    background-color: #d9d9d9;
+    border: 1px solid black;
+    padding: 12px 14px;
+    border-radius: 10px;
+    width: 219px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.screen p {
+    color: black;
+    font-size: 32px;
+}
+
+.buttons {
+    padding: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+button {
+    width: 41px;
+    height: 41px;
+    border: 1px solid #7E7E7E;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    flex: 1;
+}
+
+.row {
+    display: flex;
+    gap: 9px;
+    flex: 1;
+}
+
+.last-button {
+    margin-right: 27px;
+}
+
+#zero {
+    flex: 1;
+}
+
+.last-row-button {
+    flex: 0;
+    min-width: 45.25px;
+}
+
+.red {
+    background-color: #7C1C1E;
+}
+
+.grey {
+    background-color: #637081;
+}
+
+.number {
+    background-color: #1C467C;
+}
+
+.operator {
+    background-color: #7C5A1C;
 }
