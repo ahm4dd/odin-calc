@@ -51,6 +51,7 @@ body {
 }
 
 button {
+    text-align: center;
     width: 41px;
     height: 41px;
     border: 1px solid #7E7E7E;
